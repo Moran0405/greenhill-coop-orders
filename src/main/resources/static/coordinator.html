@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greenhill Food Co-op &middot; Coordinator Desk</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="masthead">
+    <div class="masthead-inner">
+        <div class="brand">
+            <span class="brand-mark">&#127807;</span>
+            <div>
+                <h1>Greenhill Food Co-op</h1>
+                <p class="tagline">Coordinator desk &middot; catalogue, rounds and weekly summaries</p>
+            </div>
+        </div>
+        <nav class="top-nav">
+            <a href="index.html" class="nav-link">Member ordering</a>
+            <a href="coordinator.html" class="nav-link active">Coordinator desk</a>
+            <span id="whoami" class="whoami"></span>
+            <button id="signout-btn" class="btn btn-ghost hidden">Sign out</button>
+        </nav>
+    </div>
+</header>
+
+<main class="wrap">
+    <!-- Coordinator sign-in -->
+    <section id="signin-panel" class="panel signin-panel">
+        <h2>Coordinator sign-in</h2>
+        <p>Enter the shared coordinator pass phrase to manage the catalogue, rounds and weekly summaries.</p>
+        <form id="coordinator-signin-form" class="signin-form">
+            <input type="password" id="password" placeholder="Coordinator pass phrase" required>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </form>
+        <p id="signin-error" class="error-msg hidden"></p>
+    </section>
+
+    <!-- Coordinator workspace -->
+    <section id="coordinator-panel" class="hidden">
+        <div class="columns" style="grid-template-columns: 1fr;">
+            <section class="panel">
+                <h2>Weekly rounds</h2>
+                <div class="toolbar">
+                    <select id="round-select"></select>
+                    <button id="round-close" class="btn btn-warn btn-sm">Close round</button>
+                    <button id="round-pack" class="btn btn-sm">Mark packed</button>
+                    <button id="print-summary" class="btn btn-sm btn-primary">Print summary</button>
+                </div>
+                <div id="round-list"></div>
+                <fieldset class="form-box">
+                    <legend>Open a new round</legend>
+                    <div class="inline-form">
+                        <input type="text" id="round-name" placeholder="Round name, e.g. Week 40">
+                        <input type="datetime-local" id="round-opens">
+                        <input type="datetime-local" id="round-closes">
+                        <button id="round-create" class="btn btn-primary btn-sm">Create round</button>
+                    </div>
+                </fieldset>
+            </section>
+
+            <section class="panel" id="summary-panel">
+                <h2>Wholesale summary &mdash; <span id="summary-round-name"></span></h2>
+                <p class="hint">Total quantity of every product across all member orders, ready for the bulk purchase.</p>
+                <div class="table-wrap">
+                    <table class="coop" id="summary-table">
+                        <thead>
+                        <tr><th>Product</th><th>Pricing</th><th>Total quantity</th><th>Estimated cost</th></tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2>All orders this round</h2>
+                <div class="table-wrap">
+                    <table class="coop" id="orders-table">
+                        <thead>
+                        <tr><th>Member</th><th>Items</th><th>Estimated total</th><th>Updated</th></tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2>Catalogue management</h2>
+                <div class="toolbar">
+                    <label style="font-size:13px"><input type="checkbox" id="show-inactive"> show deactivated items</label>
+                </div>
+                <div class="table-wrap">
+                    <table class="coop" id="products-table">
+                        <thead>
+                        <tr><th>Product</th><th>Pricing</th><th>Price</th><th>Status</th><th></th></tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <fieldset class="form-box">
+                    <legend>Add / update a product</legend>
+                    <div class="inline-form">
+                        <input type="text" id="product-name" placeholder="Product name">
+                        <input type="text" id="product-desc" placeholder="Description (optional)">
+                        <select id="product-type">
+                            <option value="UNIT">Whole unit</option>
+                            <option value="WEIGHT">By weight (kg)</option>
+                        </select>
+                        <input type="number" id="product-price" min="0" step="0.05" placeholder="Price">
+                        <button id="product-create" class="btn btn-primary btn-sm">Add product</button>
+                    </div>
+                    <p id="product-msg" class="hidden"></p>
+                </fieldset>
+            </section>
+
+            <section class="panel">
+                <h2>Members</h2>
+                <div class="table-wrap">
+                    <table class="coop" id="members-table">
+                        <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Joined</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <fieldset class="form-box">
+                    <legend>Register a new member household</legend>
+                    <div class="inline-form">
+                        <input type="text" id="member-name" placeholder="Household / contact name">
+                        <input type="email" id="member-email" placeholder="Email">
+                        <input type="text" id="member-phone" placeholder="Phone (optional)">
+                        <button id="member-create" class="btn btn-primary btn-sm">Add member</button>
+                    </div>
+                    <p id="member-msg" class="hidden"></p>
+                </fieldset>
+            </section>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <p>Greenhill Food Co-op ordering system &middot; run by volunteers, for the neighbourhood.</p>
+</footer>
+
+<script src="js/coordinator.js"></script>
+</body>
+</html>

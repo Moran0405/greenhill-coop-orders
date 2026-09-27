@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greenhill Food Co-op &middot; Weekly Ordering</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="masthead">
+    <div class="masthead-inner">
+        <div class="brand">
+            <span class="brand-mark">&#127807;</span>
+            <div>
+                <h1>Greenhill Food Co-op</h1>
+                <p class="tagline">Volunteer-run &middot; Moorooka, Brisbane &middot; Weekly pick-up every Thursday</p>
+            </div>
+        </div>
+        <nav class="top-nav">
+            <a href="index.html" class="nav-link active">Member ordering</a>
+            <a href="coordinator.html" class="nav-link">Coordinator desk</a>
+            <span id="whoami" class="whoami"></span>
+            <button id="signout-btn" class="btn btn-ghost hidden">Sign out</button>
+        </nav>
+    </div>
+</header>
+
+<main class="wrap">
+    <!-- Sign-in card -->
+    <section id="signin-panel" class="panel signin-panel">
+        <h2>Welcome to the ordering bench</h2>
+        <p>Sign in with the email address your household joined the co-op with,
+            or with the coordinator pass phrase on the <a href="coordinator.html">coordinator desk</a>.</p>
+        <form id="signin-form" class="signin-form">
+            <input type="email" id="email" placeholder="you@example.com" required>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </form>
+        <p id="signin-error" class="error-msg hidden"></p>
+    </section>
+
+    <!-- Member workspace -->
+    <section id="member-panel" class="hidden">
+        <div id="round-banner" class="round-banner hidden"></div>
+
+        <div class="columns">
+            <section class="panel">
+                <h2>This week's catalogue</h2>
+                <p class="hint">Whole-unit items take whole numbers; pantry staples sold by weight accept decimals such as 1.5.</p>
+                <div id="product-grid" class="product-grid"></div>
+            </section>
+
+            <section class="panel">
+                <h2>Your order</h2>
+                <div id="order-status" class="order-status"></div>
+                <div id="basket" class="basket"></div>
+                <div id="basket-total" class="basket-total"></div>
+                <div class="basket-actions">
+                    <button id="save-order" class="btn btn-primary">Save order</button>
+                    <button id="cancel-order" class="btn btn-danger hidden">Cancel order</button>
+                </div>
+                <p id="order-error" class="error-msg hidden"></p>
+            </section>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <p>Greenhill Food Co-op ordering system &middot; run by volunteers, for the neighbourhood.</p>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
