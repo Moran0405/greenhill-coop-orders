@@ -49,7 +49,10 @@ CREATE USER 'coop_user'@'localhost' IDENTIFIED BY 'coop_pass';
 GRANT ALL PRIVILEGES ON greenhill_coop.* TO 'coop_user'@'localhost';
 ```
 
-Optionally load the sample catalogue from `src/main/resources/db/seed.sql`.
+Optionally pre-create the schema and load the sample data (members,
+catalogue, two weekly rounds and example orders) from
+`src/main/resources/db/seed.sql`; otherwise Hibernate creates the
+tables on first start-up.
 
 ### 2. Build and run
 
